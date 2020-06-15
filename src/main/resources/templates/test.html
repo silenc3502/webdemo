@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Spring Test</title>
+</head>
+<body>
+    <h1>Hello Spring Test ~~!!~!</h1>
+    <!-- th:text="${message}"는 앞서서
+         BoardController의 @GetMapping("/test")에서
+         model.addAttribute()가 처리한 message 값을 받아온다. -->
+    <p th:text="${message}">Message: ${message}</p>
+</body>
+</html>
