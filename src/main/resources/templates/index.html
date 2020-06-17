@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+    <h3>Home Page</h3>
+
+    <!-- form의 디폴트는 GET 방식임을 상기하자! -->
+    <form th:action="@{/board/register}">
+        <input type="submit" value="register(GET)">
+    </form>
+
+    <!-- POST로 보낼때는 method="post"를 지정해야 한다. -->
+    <form th:action="@{/board/register}" method="post">
+        <input type="submit" value="register(POST)">
+    </form>
+
+    <form th:action="@{/board/modify}">
+        <input type="submit" value="modify(GET)">
+    </form>
+
+    <form th:action="@{/board/modify}" method="post">
+        <input type="submit" value="modify(POST)">
+    </form>
+
+    <form th:action="@{/board/remove}" method="post">
+        <input type="submit" value="remove(POST)">
+    </form>
+</body>
+</html>
