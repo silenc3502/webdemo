@@ -8,6 +8,17 @@
         Test
       </router-link>
     </div>
+    <div id="contents">
+      <a href="https://www.naver.com">
+        <img id="homeImg" src="../../public/dog.jpg" title="HomeImage"/>
+      </a>
+    </div>
+    <div id="sidebar">
+      <h2>Sidebar</h2>
+    </div>
+    <div id="footer">
+      <h2>(주)가즈아</h2>
+    </div>
   </div>
 </template>
 
@@ -30,13 +41,13 @@ div {
   margin: 5px 5px;
 }
 #contents {
-  max-width: 64%;
+  max-width: 54%;
   padding: 20px;
   margin-bottom: 20px;
   float: left;
 }
 #sidebar {
-  width: 32%;
+  width: 27%;
   padding: 20px;
   float: right;
   margin-bottom: 20px;
@@ -44,5 +55,8 @@ div {
 #footer {
   clear: both;
   padding: 20px;
+}
+#homeImg {
+  max-width: 100%;
 }
 </style>
