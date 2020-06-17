@@ -16,5 +16,7 @@ new Vue({
   axios,
   vuex,
   vuetify,
-  render: h => h(App)
+  render: h => h(App),
+  components: {
+  }
 }).$mount('#app')
