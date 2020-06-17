@@ -40,8 +40,8 @@ export default new Vuex.Store({
     generateRandomNumber ({ commit }) {
       axios.get('http://localhost:7777/random')
         .then((res) => {
-          console.log('res = ' + res)
-          commit('successGenerateRandomNumber', res.data.randNumber)
+          console.log('res = ' + parseInt(res.data.randNumber))
+          commit('successGenerateRandomNumber', parseInt(res.data.randNumber))
         })
     }
   },

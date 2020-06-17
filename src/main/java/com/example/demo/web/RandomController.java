@@ -20,12 +20,22 @@ public class RandomController {
 
     // 서비스
     private RandNumService randNumService;
+
+    public RandomController(RandNumService randNumService) {
+        this.randNumService = randNumService;
+    }
     
     @GetMapping("/random")
     @ResponseBody
     // 엔티티
     public ResponseEntity<RandNumMessage> getRandom() {
+        logger.info("getRandom()");
         RandNumMessage random = randNumService.getRandom();
         return ResponseEntity.ok(random);
     }
+    /*
+    public int getRandom() {
+        return rand.nextInt(32) + 1;
+    }
+     */
 }
