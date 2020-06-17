@@ -4,10 +4,11 @@ import com.example.demo.entity.Board;
 import com.example.demo.repository.BoardDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Component
+@Service
 public class BoardServiceImpl implements BoardService {
     @Autowired
     private BoardDAO dao;

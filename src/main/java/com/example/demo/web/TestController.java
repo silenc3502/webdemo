@@ -47,7 +47,7 @@ public class TestController {
         model.addAttribute(service.read(boardNo));
     }
 
-    @GetMapping("/remove")
+    @PostMapping("/remove")
     public String remove(int boardNo, Model model) throws Exception {
         logger.info("remove");
 
@@ -58,13 +58,19 @@ public class TestController {
         return "success";
     }
 
+    /*
     @GetMapping("/modify")
     public void modifyForm(Board board, Model model) throws Exception {
         logger.info("modifyForm");
+        logger.info("board = " + board);
+        logger.info("writer = " + board.getWriter());
+        logger.info("title = " + board.getTitle());
+        logger.info("content = " + board.getContent());
 
         service.modify(board);
         //model.addAttribute();
     }
+     */
 
     @PostMapping("/modify")
     public String modify(Board board, Model model) throws Exception {

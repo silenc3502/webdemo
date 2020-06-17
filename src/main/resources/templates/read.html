@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Read</title>
@@ -12,10 +12,14 @@
 
         console.log(formObj)
 
+        //$("#btnModify").on("click", function() {
+        //    var boardNo = $("#boardNo");
+        //    var boardNoVal = boardNo.val();
+        //    self.location = "modify?boardNo=" + boardNoVal;
+        //});
         $("#btnModify").on("click", function() {
-            var boardNo = $("#boardNo");
-            var boardNoVal = boardNo.value();
-            self.location = "modify?boardNo=" + boardNoVal;
+            formObj.attr("action", "modify");
+            formObj.submit();
         });
 
         $("#btnRemove").on("click", function() {
@@ -31,5 +35,34 @@
 
 <body>
     <h1>Read</h1>
+
+    <!-- th:object 컨트롤러로 객체를 전달함 -->
+    <form id="board" th:object="${board}" method="post">
+        <input type="hidden" name="boardNo" th:field="*{boardNo}"/>
+
+        <table>
+            <tr>
+                <td>Title</td>
+                <td><input type="text" name="title"
+                    th:field="*{title}" readonly="readonly"/></td>
+            </tr>
+            <tr>
+                <td>Writer</td>
+                <td><input type="text" name="writer"
+                           th:field="*{writer}" readonly="readonly"/></td>
+            </tr>
+            <tr>
+                <td>Content</td>
+                <td><textarea name="content"
+                           th:field="*{content}" readonly="readonly"/></td>
+            </tr>
+        </table>
+    </form>
+
+    <div>
+        <button type="submit" id="btnModify">Modify</button>
+        <button type="submit" id="btnRemove">Remove</button>
+        <button type="submit" id="btnList">List</button>
+    </div>
 </body>
 </html>

@@ -45,7 +45,7 @@
             </tr>
             <tr>
                 <td>Content</td>
-                <td><input type="text" name="content" th:field="*{content}"/></td>
+                <td><textarea name="content" th:field="*{content}"/></td>
                 <td><font color="red">
                     <span th:if="${#fields.hasErrors('content')}"
                           th:error="*{content}">writer 에러 메시지</span>
