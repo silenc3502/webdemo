@@ -8,15 +8,21 @@
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
+    // DOM에 함수를 설정하는 작업
     $(document).ready(function() {
+        // form id="board" 객체를 얻어옴
         var formObj = $("#board");
 
+        // btnRegister(등록 버튼)을 누르면
+        // /boardRegister로 PostMapping 된 장소로 보내줌
         $("#btnRegister").on("click", function() {
             formObj.attr("action", "boardRegister");
             formObj.attr("method", "post");
             formObj.submit();
         });
 
+        // self.location을 /list로 변경해서
+        // 현재 작성된 보드 테이블들을 보여준다.
         $("#btnList").on("click", function() {
             self.location = "list";
         })
@@ -24,13 +30,20 @@
 </script>
 
 <body>
+    <!-- th:action은 해당 form의 동작이 registerBoard로 처리됨을 의미
+         th:object는 해당 내용을 처리할 때 board 객체를 전달함을 의미한다.
+         $가 들어가면 값 자체가 존재를 해야한다는 제약사항이 있음
+         *은 값을 설정하는 경우에 사용하는편이다.
+         #은 태그 아이디에 해당함 -->
     <form id="board" action="success.html" th:action="@{registerBoard}"
           th:object="${board}" method="POST">
         <table>
             <tr>
                 <td>Title</td>
+                <!-- th:field는 위쪽에 object에 설정된 title값을 설정하게 한다. -->
                 <td><input type="text" name="title" th:field="*{title}"/></td>
                 <td><font color="red">
+                    <!-- 만약 title 필드에 에러가 있다면 error를 발생시키는 부분 -->
                     <span th:if="${#fields.hasErrors('title')}"
                           th:error="*{title}">title의 에러 메시지</span>
                 </font></td>
