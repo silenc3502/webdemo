@@ -58,19 +58,12 @@ public class TestController {
         return "success";
     }
 
-    /*
     @GetMapping("/modify")
-    public void modifyForm(Board board, Model model) throws Exception {
+    public void modifyForm(int boardNo, Model model) throws Exception {
         logger.info("modifyForm");
-        logger.info("board = " + board);
-        logger.info("writer = " + board.getWriter());
-        logger.info("title = " + board.getTitle());
-        logger.info("content = " + board.getContent());
 
-        service.modify(board);
-        //model.addAttribute();
+        model.addAttribute(service.read(boardNo));
     }
-     */
 
     @PostMapping("/modify")
     public String modify(Board board, Model model) throws Exception {

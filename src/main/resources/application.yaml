@@ -4,8 +4,8 @@ server:
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/test?serverTimezone=UTC&useSSL=false
-    username: stest
-    password: 1234
+    username: sdr
+    password: alrom123
     driver-class-name: com.mysql.cj.jdbc.Driver
   thymeleaf:
     prefix: classpath:/templates/

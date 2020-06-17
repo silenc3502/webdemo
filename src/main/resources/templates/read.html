@@ -7,62 +7,61 @@
 
 <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
-    $(document).ready(function() {
-        var formObj = $("#board");
+	$(document).ready(function() {
 
-        console.log(formObj)
+		var formObj = $("#board");
 
-        //$("#btnModify").on("click", function() {
-        //    var boardNo = $("#boardNo");
-        //    var boardNoVal = boardNo.val();
-        //    self.location = "modify?boardNo=" + boardNoVal;
-        //});
-        $("#btnModify").on("click", function() {
-            formObj.attr("action", "modify");
-            formObj.submit();
-        });
+		console.log(formObj);
 
-        $("#btnRemove").on("click", function() {
-            formObj.attr("action", "remove");
-            formObj.submit();
-        });
+		$("#btnModify").on("click", function() {
+			var boardNo = $("#boardNo");
+			var boardNoVal = boardNo.val();
 
-        $("#btnList").on("click", function() {
-            self.location = "list";
-        })
-    })
+			self.location = "modify?boardNo=" + boardNoVal;
+		});
+
+		$("#btnRemove").on("click", function() {
+			formObj.attr("action", "remove");
+			formObj.submit();
+		});
+
+		$("#btnList").on("click", function() {
+			self.location = "list";
+		});
+
+	});
 </script>
 
 <body>
-    <h1>Read</h1>
+<h2>READ</h2>
 
-    <!-- th:object 컨트롤러로 객체를 전달함 -->
-    <form id="board" th:object="${board}" method="post">
-        <input type="hidden" name="boardNo" th:field="*{boardNo}"/>
+<form id="board" th:object="${board}" method="POST">
+    <input type="hidden" name="boardNo" th:field="*{boardNo}" />
 
-        <table>
-            <tr>
-                <td>Title</td>
-                <td><input type="text" name="title"
-                    th:field="*{title}" readonly="readonly"/></td>
-            </tr>
-            <tr>
-                <td>Writer</td>
-                <td><input type="text" name="writer"
-                           th:field="*{writer}" readonly="readonly"/></td>
-            </tr>
-            <tr>
-                <td>Content</td>
-                <td><textarea name="content"
-                           th:field="*{content}" readonly="readonly"/></td>
-            </tr>
-        </table>
-    </form>
+    <table>
+        <tr>
+            <td>Title</td>
+            <td><input type="text" name="title"
+                       th:field="*{title}" readonly="readonly" /></td>
+        </tr>
+        <tr>
+            <td>Writer</td>
+            <td><input type="text" name="writer"
+                       th:field="*{writer}" readonly="readonly" /></td>
+        </tr>
+        <tr>
+            <td>Content</td>
+            <td><textarea name="content"
+                          th:field="*{content}" readonly="readonly">
+				</textarea></td>
+        </tr>
+    </table>
+</form>
 
-    <div>
-        <button type="submit" id="btnModify">Modify</button>
-        <button type="submit" id="btnRemove">Remove</button>
-        <button type="submit" id="btnList">List</button>
-    </div>
+<div>
+    <button type="submit" id="btnModify">Modify</button>
+    <button type="submit" id="btnRemove">Remove</button>
+    <button type="submit" id="btnList">List</button>
+</div>
 </body>
 </html>
