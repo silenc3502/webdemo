@@ -41,6 +41,7 @@ public class TestController {
     }
 
     @GetMapping("/read")
+    //               Board board
     public void read(int boardNo, Model model) throws Exception {
         logger.info("read");
 
