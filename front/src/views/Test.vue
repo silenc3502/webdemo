@@ -59,6 +59,9 @@ export default {
     // alert('Before Create: ' + this.message)
   },
   created () {
+    // this.$cookies에 'value' 키값 형태로 값이 저장되어 있다.
+    // 하지만 이것을 store에 있는 count에 복원해주지 않았기 때문에
+    // 상태값이 저장되지 않았던 것이다.
     this.$store.state.count = this.$cookies.get('value')
     // alert('Created: ' + this.message)
   },
