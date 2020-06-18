@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
@@ -7,6 +8,10 @@ public class Message {
     private Integer id;
     private String text;
     private Date createdDate;
+
+    public Message(String text) {
+        this.text = text;
+    }
 
     public Message(Integer id, String text, Date createdDate) {
         this.id = id;
