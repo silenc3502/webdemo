@@ -11,6 +11,20 @@ spring:
     prefix: classpath:/templates/
     check-template-location: true
     suffix: .html
-    mode: HTML5
+    mode: HTML
     cache: false
     order: 0
+  jpa:
+    open-in-view: false
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+    app:
+      sample:
+        messages:
+          AuditingFilter: DEBUG
+          SecurityChecker: DEBUG
+          MessageService: DEBUG

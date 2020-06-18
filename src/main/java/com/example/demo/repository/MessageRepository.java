@@ -1,6 +1,9 @@
 package com.example.demo.repository;
 
 import com.example.demo.entity.Message;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.datasource.DataSourceUtils;
@@ -12,6 +15,7 @@ import java.sql.*;
 import java.util.Date;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 import static java.time.ZonedDateTime.now;
 
@@ -19,12 +23,30 @@ import static java.time.ZonedDateTime.now;
 public class MessageRepository {
     private final static Logger log = LoggerFactory.getLogger(MessageRepository.class);
 
-    private DataSource dataSource;
+    private SessionFactory sessionFactory;
 
-    public MessageRepository(DataSource dataSource) {
-        this.dataSource = dataSource;
+    // private DataSource dataSource;
+
+    public MessageRepository(DataSource dataSource, SessionFactory sessionFactory) {
+        // this.dataSource = dataSource;
+        this.sessionFactory = sessionFactory;
     }
 
+    public Message saveMessage(Message message) {
+        Session session = sessionFactory.openSession();
+        session.save(message);
+        return message;
+    }
+
+    public List<Message> getMessage() {
+        Session session = sessionFactory.getCurrentSession();
+        String hql = "from Message";
+        Query<Message> query = session.createQuery(hql, Message.class);
+        System.out.println(query.list());
+        return query.list();
+    }
+
+    /*
     public Message saveMessage(Message message) {
         Connection c = DataSourceUtils.getConnection(dataSource);
 
@@ -38,14 +60,14 @@ public class MessageRepository {
 
             if(curTime == null) {
                 insertSql = "insert into messages (id, text) values (null, ?)";
-                log.info("null!");
+                log.info("Don't do it - null!");
                 doNot = false;
 
                 ps = c.prepareStatement(insertSql, Statement.RETURN_GENERATED_KEYS);
                 ps.setString(1, message.getText());
             } else {
                 insertSql = "insert into messages (id, text, created_date) values (null, ?, ?)";
-                log.info("Don't do it!");
+                log.info("Do it!");
 
                 ps = c.prepareStatement(insertSql, Statement.RETURN_GENERATED_KEYS);
 
@@ -86,4 +108,5 @@ public class MessageRepository {
         }
         return null;
     }
+     */
 }
