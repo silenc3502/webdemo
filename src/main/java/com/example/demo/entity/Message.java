@@ -1,6 +1,7 @@
 package com.example.demo.entity;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
@@ -21,19 +22,9 @@ public class Message {
 
     public Message() {}
 
-    public Message(Integer id, Date createdDate) {
-        this.id = id;
-        this.createdDate = createdDate;
-    }
-
     public Message(String text) {
         this.text = text;
-    }
-
-    public Message(Integer id, String text, Date createdDate) {
-        this.id = id;
-        this.text = text;
-        this.createdDate = createdDate;
+        this.createdDate = new Date();
     }
 
     public Integer getId() {

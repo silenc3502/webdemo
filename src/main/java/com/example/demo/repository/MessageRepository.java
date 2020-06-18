@@ -33,7 +33,9 @@ public class MessageRepository {
     }
 
     public Message saveMessage(Message message) {
+        log.info("saveMessage()");
         Session session = sessionFactory.openSession();
+        log.info("openSession()");
         session.save(message);
         return message;
     }
