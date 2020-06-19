@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% if title %}
+    <title>{{ title }} Web Page</title>
+    {% else %}
+    <title>Welcome!</title>
+    {% endif %}
+</head>
+<body>
+    <h1> Hello, {{ user.nickname }}!!!</h1>
+    <!-- 위와 같이 for문이나 if문을 사용할 때
+        지속적으로 {% %} 문법을 남발해야 한다.
+        그래서 사람들이 HTML Tag가 많이 들어갈 경우 Flask를 기피하게 된다. -->
+</body>
+</html>
