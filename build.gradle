@@ -32,6 +32,7 @@ dependencies {
     compile 'org.springframework.boot:spring-boot-starter-aop'
     compile 'org.hibernate:hibernate-core:5.4.17.Final'
     compile 'org.springframework:spring-orm'
+    compile 'org.apache.httpcomponents:httpclient:4.5.12'
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
